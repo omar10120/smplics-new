@@ -1,0 +1,1 @@
+export { LogoStripSection } from "./LogoStripSection";

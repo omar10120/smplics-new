@@ -2,19 +2,27 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+import { useTheme } from "../../../../contexts/ThemeContext";
+import { themes } from "../../../../lib/utils";
 
 export const TestimonialsSection = (): JSX.Element => {
+  const { theme } = useTheme();
+  const currentTheme = themes[theme];
+  
   // Testimonial data
   const testimonial = {
     text: "Without any doubt I recommend Smplics as one of the best web design and digital marketing agencies. One of the best agencies I've came across so far. Wouldn't be hesitated to introduce their work to someone else.",
   };
 
   return (
-    <section className="relative w-full bg-[#1f1e1b] overflow-hidden py-12 md:py-20">
+    <section className={`relative w-full ${currentTheme.background} overflow-hidden py-12 md:py-20`}>
       <div className="relative w-full max-w-7xl mx-auto px-4">
         {/* Background vectors */}
         <div className="absolute inset-0 z-0">
-          <img
+          {theme === 'dark'?(
+            <>
+
+<img
             className="absolute w-full h-64 md:h-[430px] bottom-0 left-0"
             alt="Vector background bottom"
             src="/vector-1-1.svg"
@@ -24,6 +32,19 @@ export const TestimonialsSection = (): JSX.Element => {
             alt="Vector background top"
             src="/vector-1-2.svg"
           />
+            </>
+          ):(
+              <>
+              <div
+                          className="absolute w-full h-64 md:h-[430px] bottom-0 left-0"
+                          
+                        />
+                        <div
+                          className="absolute w-full h-64 md:h-[430px] top-0 left-0"
+                        />
+              </>
+          )
+          }
         </div>
 
         {/* Content container */}
@@ -32,7 +53,7 @@ export const TestimonialsSection = (): JSX.Element => {
           <div className="flex flex-col items-center justify-center gap-4 md:gap-[18px]">
             <div className="p-2.5 flex items-center justify-center">
               <h2 className="text-xl md:text-[44px] font-bold leading-tight md:leading-[54px] text-center font-['Poppins',Helvetica] tracking-[0]">
-                <span className="text-white">Why cutomers love</span>
+                <span className={currentTheme.text}>Why cutomers love</span>
                 <span className="text-[#ee7639]"> working with us</span>
               </h2>
             </div>
@@ -44,13 +65,13 @@ export const TestimonialsSection = (): JSX.Element => {
             <Button
               variant="ghost"
               size="icon"
-              className="p-0 h-6 md:h-7 w-6 md:w-[30.64px] text-white hover:bg-transparent order-1 md:order-none"
+              className={`p-0 h-6 md:h-7 w-6 md:w-[30.64px] ${currentTheme.text} hover:bg-transparent order-1 md:order-none`}
             >
               <ChevronLeftIcon className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
 
             {/* Testimonial card */}
-            <Card className="w-full max-w-[791px] border-[0.74px] border-solid border-[#2a2a2a] rounded-[7.35px] bg-[linear-gradient(137deg,rgba(28,28,28,1)_0%,rgba(5,5,5,1)_100%)] order-2 md:order-none">
+            <Card className={`w-full max-w-[791px] border-[0.74px] border-solid ${theme === 'dark' ? 'border-[#2a2a2a] bg-[linear-gradient(137deg,rgba(28,28,28,1)_0%,rgba(5,5,5,1)_100%)]' : 'border-gray-200 bg-white shadow-lg'} rounded-[7.35px] order-2 md:order-none`}>
               <CardContent className="p-4 md:p-8 relative">
                 <div className="relative w-full">
                   {/* Quote mark top left */}
@@ -59,7 +80,7 @@ export const TestimonialsSection = (): JSX.Element => {
                   </div>
 
                   {/* Testimonial text with proper spacing */}
-                  <div className="mx-auto max-w-full md:w-[545px] mt-8 md:mt-12 mb-8 md:mb-12 font-['Poppins',Helvetica] font-semibold text-white text-sm md:text-lg text-center leading-relaxed md:leading-9 px-4 md:px-0 relative z-20">
+                  <div className={`mx-auto max-w-full md:w-[545px] mt-8 md:mt-12 mb-8 md:mb-12 font-['Poppins',Helvetica] font-semibold ${currentTheme.text} text-sm md:text-lg text-center leading-relaxed md:leading-9 px-4 md:px-0 relative z-20`}>
                     {testimonial.text}
                   </div>
 
@@ -75,7 +96,7 @@ export const TestimonialsSection = (): JSX.Element => {
             <Button
               variant="ghost"
               size="icon"
-              className="p-0 h-6 md:h-7 w-6 md:w-[30.64px] text-white hover:bg-transparent order-3 md:order-none"
+              className={`p-0 h-6 md:h-7 w-6 md:w-[30.64px] ${currentTheme.text} hover:bg-transparent order-3 md:order-none`}
             >
               <ChevronRightIcon className="h-4 w-4 md:h-5 md:w-5" />
             </Button>

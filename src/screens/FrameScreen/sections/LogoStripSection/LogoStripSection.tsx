@@ -3,8 +3,11 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../../../../components/ui/tabs";
+import { useTheme } from "../../../../contexts/ThemeContext";
 
 export const LogoStripSection = (): JSX.Element => {
+  const { theme } = useTheme();
+
   // Service category tabs data
   const serviceTabs = [
     { id: "design", label: "Design", variant: "ghost" },
@@ -66,7 +69,7 @@ export const LogoStripSection = (): JSX.Element => {
   };
 
   return (
-    <section id="services" className="relative w-full bg-[#1f1e1b] py-12 md:py-24 overflow-hidden">
+    <section id="services" className={`relative w-full ${theme === 'dark' ? 'bg-[#1f1e1b]' : 'bg-gray-50'} py-12 md:py-24 overflow-hidden`}>
       {/* Background elements */}
       <div className="absolute w-full h-full top-0 left-0 overflow-hidden">
         <img
@@ -75,11 +78,13 @@ export const LogoStripSection = (): JSX.Element => {
           src="/planet.svg"
         />
         <div className="absolute w-96 h-96 md:w-[799px] md:h-[832px] top-48 left-4 md:top-[356px] md:left-[25px] bg-ee-7639 rounded-[186075.62px] blur-[300px] opacity-20" />
-        <img
+        {theme === 'dark'?(
+          <img
           className="absolute w-full h-auto top-64 md:top-[446px] left-0"
           alt="Background"
           src="/bg.svg"
         />
+        ):('')}
       </div>
 
       {/* Main content container */}
@@ -90,7 +95,7 @@ export const LogoStripSection = (): JSX.Element => {
             Our Services
           </Badge>
 
-          <h2 className="flex flex-col md:flex-row items-center gap-2 font-bold text-white text-xl md:text-4xl leading-tight md:leading-[54px] text-center">
+          <h2 className={`flex flex-col md:flex-row items-center gap-2 font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-xl md:text-4xl leading-tight md:leading-[54px] text-center`}>
             Digital solutions that move your business forward
             <img
               className="w-4 h-4 md:w-[21.87px] md:h-[21.86px]"
@@ -99,7 +104,7 @@ export const LogoStripSection = (): JSX.Element => {
             />
           </h2>
 
-          <p className="max-w-full md:max-w-[547px] text-white text-sm md:text-base leading-relaxed md:leading-[26.9px] text-center">
+          <p className={`max-w-full md:max-w-[547px] ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-sm md:text-base leading-relaxed md:leading-[26.9px] text-center`}>
             We Provide End-to-end Digital Services That Help Businesses Thrive
             In An Ever-evolving Digital World. Our Solutions Combine Design,
             Development, And Strategy To Deliver Results That Matter.
@@ -108,7 +113,7 @@ export const LogoStripSection = (): JSX.Element => {
 
         {/* Service category tabs */}
         <Tabs defaultValue="all" className="mb-8 md:mb-12 w-full">
-          <TabsList className="flex flex-col md:flex-row gap-2 md:gap-4 bg-transparent w-full">
+          <TabsList className={`flex flex-col md:flex-row gap-2 md:gap-4 ${theme === 'dark' ? 'bg-transparent' : 'bg-gray-100'} w-full`}>
             {serviceTabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
@@ -117,8 +122,8 @@ export const LogoStripSection = (): JSX.Element => {
                   tab.id === "all"
                     ? "bg-[url(/card.svg)] text-[#ee7639] font-semibold"
                     : tab.id === "design"
-                      ? "bg-[url(/card-3.svg)] text-white"
-                      : "bg-[url(/card-1.svg)] text-white"
+                      ? theme === 'dark' ? "bg-[url(/card-3.svg)] text-white" : "bg-white text-gray-900 border border-gray-200"
+                      : theme === 'dark' ? "bg-[url(/card-1.svg)] text-white" : "bg-white text-gray-900 border border-gray-200"
                 } bg-[100%_100%] border-none`}
               >
                 {tab.label}
@@ -133,17 +138,17 @@ export const LogoStripSection = (): JSX.Element => {
             service.isHighlighted ? (
               <div
                 key={`top-service-${index}`}
-                className="relative w-full max-w-[339px] mx-auto h-[280px] md:h-[335px] rounded-[34.81px] border-[none] before:content-[''] before:absolute before:inset-0 before:p-[1.45px] before:rounded-[34.81px] before:[background:linear-gradient(153deg,rgba(35,35,35,1)_0%,rgba(35,35,35,0.31)_23%,rgba(35,35,35,1)_52%,rgba(35,35,35,0.3)_75%,rgba(35,35,35,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
+                className={`relative w-full max-w-[339px] mx-auto h-[280px] md:h-[335px] rounded-[34.81px] border-[none] ${theme === 'dark' ? 'before:content-[\'\'] before:absolute before:inset-0 before:p-[1.45px] before:rounded-[34.81px] before:[background:linear-gradient(153deg,rgba(35,35,35,1)_0%,rgba(35,35,35,0.31)_23%,rgba(35,35,35,1)_52%,rgba(35,35,35,0.3)_75%,rgba(35,35,35,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none' : 'bg-white shadow-lg border border-gray-200'}`}
               >
                 <div className="relative w-full h-full p-4">
-                  <div className="absolute inset-4 rounded-[21.76px] shadow-[inset_0px_5.8px_34.81px_-10.15px_#ffc425]" />
-                  <div className="absolute inset-0 bg-[url(/card-2.svg)] bg-[100%_100%] rounded-[34.81px]">
+                  <div className={`absolute inset-4 rounded-[21.76px] ${theme === 'dark' ? 'shadow-[inset_0px_5.8px_34.81px_-10.15px_#ffc425]' : 'shadow-[inset_0px_5.8px_34.81px_-10.15px_rgba(238,118,57,0.3)]'}`} />
+                  <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-[url(/card-2.svg)]' : 'bg-white'} bg-[100%_100%] rounded-[34.81px]`}>
                     <div className="flex flex-col items-center justify-center gap-2.5 h-full px-4">
-                      <h3 className="font-semibold text-white text-sm md:text-[16.7px] text-center tracking-[0] leading-normal">
+                      <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-[16.7px] text-center tracking-[0] leading-normal`}>
                         {service.title}
                       </h3>
-                      <div className="opacity-80 [font-family:'Poppins',Helvetica] font-normal text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px] max-w-[221px]">
-                        <span className="text-white">
+                      <div className={`opacity-80 [font-family:'Poppins',Helvetica] font-normal text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px] max-w-[221px] ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                        <span className={theme === 'dark' ? 'text-white' : 'text-gray-700'}>
                           {service.description}
                           <br />
                         </span>
@@ -151,7 +156,7 @@ export const LogoStripSection = (): JSX.Element => {
                           What we offer:
                           <br />
                         </span>
-                        <span className="text-white">
+                        <span className={theme === 'dark' ? 'text-white' : 'text-gray-700'}>
                           {service.offerings.map((offering) => (
                             <React.Fragment key={offering}>
                               {offering}
@@ -167,7 +172,7 @@ export const LogoStripSection = (): JSX.Element => {
             ) : (
               <Card
                 key={`top-service-${index}`}
-                className="flex flex-col items-center bg-transparent border-none"
+                className={`flex flex-col items-center ${theme === 'dark' ? 'bg-transparent border-none' : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow'}`}
               >
                 <CardContent className="flex flex-col items-center gap-4 md:gap-[21px] pt-6">
                   <img
@@ -176,10 +181,10 @@ export const LogoStripSection = (): JSX.Element => {
                     src={service.icon}
                   />
                   <div className="flex flex-col items-center justify-center gap-2.5 w-full">
-                    <h3 className="font-semibold text-white text-sm md:text-[16.7px] text-center leading-normal">
+                    <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-[16.7px] text-center leading-normal`}>
                       {service.title}
                     </h3>
-                    <p className="w-full opacity-50 [font-family:'Poppins',Helvetica] font-semibold text-white text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]">
+                    <p className={`w-full opacity-50 [font-family:'Poppins',Helvetica] font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]`}>
                       {service.description}
                     </p>
                   </div>
@@ -194,7 +199,7 @@ export const LogoStripSection = (): JSX.Element => {
           {middleRowServices.map((service, index) => (
             <Card
               key={`middle-service-${index}`}
-              className="flex flex-col items-center bg-transparent border-none"
+              className={`flex flex-col items-center ${theme === 'dark' ? 'bg-transparent border-none' : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow'}`}
             >
               <CardContent className="flex flex-col items-center gap-4 md:gap-[21px] pt-6">
                 <img
@@ -203,10 +208,10 @@ export const LogoStripSection = (): JSX.Element => {
                   src={service.icon}
                 />
                 <div className="flex flex-col items-center justify-center gap-2.5 w-full">
-                  <h3 className="font-semibold text-white text-sm md:text-[16.7px] text-center leading-normal">
+                  <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-[16.7px] text-center leading-normal`}>
                     {service.title}
                   </h3>
-                  <p className="w-full opacity-50 [font-family:'Poppins',Helvetica] font-semibold text-white text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]">
+                  <p className={`w-full opacity-50 [font-family:'Poppins',Helvetica] font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]`}>
                     {service.description}
                   </p>
                 </div>
@@ -217,7 +222,7 @@ export const LogoStripSection = (): JSX.Element => {
 
         {/* Bottom row service (centered) */}
         <div className="flex justify-center w-full mb-8 md:mb-16">
-          <Card className="flex flex-col items-center bg-transparent border-none w-full max-w-[300px]">
+          <Card className={`flex flex-col items-center ${theme === 'dark' ? 'bg-transparent border-none' : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow'} w-full max-w-[300px]`}>
             <CardContent className="flex flex-col items-center gap-4 md:gap-[21px] pt-6">
               <img
                 className="w-16 h-16 md:w-[84.57px] md:h-[84.57px]"
@@ -225,10 +230,10 @@ export const LogoStripSection = (): JSX.Element => {
                 src={bottomRowService.icon}
               />
               <div className="flex flex-col items-center justify-center gap-2.5 w-full">
-                <h3 className="font-normal text-white text-sm md:text-[16.7px] text-center leading-normal">
+                <h3 className={`font-normal ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-[16.7px] text-center leading-normal`}>
                   {bottomRowService.title}
                 </h3>
-                <p className="w-full max-w-[219px] opacity-50 [font-family:'Poppins',Helvetica] font-normal text-white text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]">
+                <p className={`w-full max-w-[219px] opacity-50 [font-family:'Poppins',Helvetica] font-normal ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-xs md:text-[9.8px] text-center leading-relaxed md:leading-[19.5px]`}>
                   {bottomRowService.description}
                 </p>
               </div>

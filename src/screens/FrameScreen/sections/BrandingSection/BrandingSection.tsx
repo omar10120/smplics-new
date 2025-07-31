@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "../../../../components/ui/button";
-
+import { useTheme } from "../../../../contexts/ThemeContext";
 export const BrandingSection = (): JSX.Element => {
+
+  const { theme } = useTheme();
   return (
-    <section className="relative w-full bg-[#1f1e1b] overflow-hidden py-2 md:py-6 ">
+    <section className={`relative w-full ${theme === 'dark' ? 'bg-[#1f1e1b]' : 'bg-gray-50'} overflow-hidden py-2 md:py-6 `}>
       <div className="relative w-full max-w-[2202px] mx-auto px-4">
         {/* Background elements */}
         <div className="relative">
@@ -13,24 +15,47 @@ export const BrandingSection = (): JSX.Element => {
             src="/planet.svg"
           />
 
-          <img
+          {theme === 'dark'?(
+              <img
+              className="relative w-full max-w-[1498px] h-64 md:h-[430px] mx-auto mt-64 md:mt-[490px]"
+              alt="Vector"
+              src="/vector-1-1.svg"
+            />
+          ):(
+            <div
             className="relative w-full max-w-[1498px] h-64 md:h-[430px] mx-auto mt-64 md:mt-[490px]"
-            alt="Vector"
-            src="/vector-1-1.svg"
           />
+          )}
 
           <div className="relative w-full mt-12 md:mt-[80px]">
-            <img
-              className="w-full max-w-[2202px] h-48 md:h-[378px] mx-auto"
-              alt="Background"
-              src="/bg.svg"
-            />
+           {theme === 'dark'? (
+              <>
 
             <img
-              className="relative w-full max-w-[1498px] h-64 md:h-[430px] mx-auto -mt-48 md:-mt-[430px]"
-              alt="Vector"
-              src="/vector-1-2.svg"
+               className="w-full max-w-[2202px] h-48 md:h-[378px] mx-auto"
+               alt="Background"
+               src="/bg.svg"
+             />
+ 
+             <img
+               className="relative w-full max-w-[1498px] h-64 md:h-[430px] mx-auto -mt-48 md:-mt-[430px]"
+               alt="Vector"
+               src="/vector-1-2.svg"
+             />
+              </>
+           ):(
+              <>
+               <div
+              className="w-full max-w-[2202px] h-48 md:h-[378px] mx-auto"
+              
             />
+
+            <div
+              className="relative w-full max-w-[1498px] h-64 md:h-[430px] mx-auto -mt-48 md:-mt-[430px]"
+              
+            />
+              </>
+           )}
 
             <div className="absolute w-96 h-96 md:w-[799px] md:h-[832px] top-48 md:top-[356px] left-1/2 -translate-x-1/2 bg-ee-7639 rounded-[186075.62px] blur-[300px] opacity-20" />
           </div>
@@ -45,7 +70,7 @@ export const BrandingSection = (): JSX.Element => {
             </p>
 
             <div className="py-2.5 inline-flex items-center justify-center gap-2.5">
-              <h2 className="font-['Poppins',Helvetica] font-bold text-white text-xl md:text-4xl leading-tight md:leading-[54px] text-center">
+              <h2 className={`font-['Poppins',Helvetica] font-bold  ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-xl md:text-4xl leading-tight md:leading-[54px] text-center`}>
                 Real results. Clean execution
               </h2>
               <img
@@ -55,7 +80,7 @@ export const BrandingSection = (): JSX.Element => {
               />
             </div>
 
-            <p className="font-['Poppins',Helvetica] font-normal text-white text-sm md:text-base leading-relaxed md:leading-[26.9px] max-w-full md:max-w-[565px]">
+            <p className={`font-['Poppins',Helvetica] font-normal  ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-sm md:text-base leading-relaxed md:leading-[26.9px] max-w-full md:max-w-[565px]`}>
               We Craft Digital Products That Solve Real Problems And Drive
               Growth.
               <br /> From Smart Interfaces To Powerful Platforms — Our Work
@@ -65,11 +90,19 @@ export const BrandingSection = (): JSX.Element => {
 
           {/* Device mockups */}
           <div className="relative w-full max-w-[1247px] h-48 md:h-[319px] mb-8 md:mb-16 px-4">
+           {theme ==='dark'?(
+             <img
+             className="w-full h-full"
+             alt="Device mockups"
+             src="/frame-1000005850.svg"
+           />
+           ):(
             <img
-              className="w-full h-full"
-              alt="Device mockups"
-              src="/frame-1000005850.svg"
-            />
+            className="w-full h-full"
+            alt="Device mockups"
+            src="/Frame 1000005850.svg"
+          />
+           )}
           </div>
 
           {/* CTA Button */}

@@ -16,17 +16,24 @@ export const HeroSection = (): JSX.Element => {
   const { theme } = useTheme();
   
   // Social media icons data
-  const socialIcons = [
+  const socialIcons = theme === 'dark' ? [
     { src: "/social-icon-2.svg", alt: "Facebook" },
     { src: "/social-icon-1.svg", alt: "Twitter" },
     { src: "/social-icon-6.svg", alt: "Instagram" },
     { src: "/social-icon-3.svg", alt: "LinkedIn" },
     { src: "/social-icon-9.svg", alt: "Google" },
     { src: "/social-icon.svg", alt: "YouTube" },
+  ] : [
+    { src: "/social-icon-2-w.svg", alt: "Facebook" },
+    { src: "/social-icon-1-w.svg", alt: "Twitter" },
+    { src: "/social-icon-6-w.svg", alt: "Instagram" },
+    { src: "/social-icon-3-w.svg", alt: "LinkedIn" },
+    { src: "/social-icon-9-w.svg", alt: "Google" },
+    { src: "/social-icon-w.svg", alt: "YouTube" },
   ];
-
+  
   // Contact info items
-  const contactInfo = [
+  const contactInfo = theme === 'dark' ? [
     {
       icon: "/vector-24.svg",
       label: "Location",
@@ -37,7 +44,20 @@ export const HeroSection = (): JSX.Element => {
     },
     {
       icon: "/vector-18.svg",
-      label: "123 456 789",
+      label: "+(971) 58584-0433",
+    },
+  ]:[
+    {
+      icon: "/vector-24-w.svg",
+      label: "Location",
+    },
+    {
+      icon: "/vector-13-w.svg",
+      label: "Email",
+    },
+    {
+      icon: "/vector-18-w.svg",
+      label: "+(971) 58584-0433",
     },
   ];
 
@@ -51,16 +71,33 @@ export const HeroSection = (): JSX.Element => {
             alt="Planet"
             src="/planet.svg"
           />
-          <img
-            className="absolute w-full h-64 md:h-[430px] bottom-0 left-0"
-            alt="Vector background bottom"
-            src="/vector-1-1.svg"
-          />
-          <img
-            className="absolute w-full h-64 md:h-[430px] top-0 left-0"
-            alt="Vector background top"
-            src="/vector-1-2.svg"
-          />
+            {theme == 'dark'? (
+              <>
+                  
+                  <img
+                    className="absolute w-full h-64 md:h-[430px] bottom-0 left-0"
+                    alt="Vector background bottom"
+                    src="/vector-1-1.svg"
+                  />
+                  <img
+                    className="absolute w-full h-64 md:h-[430px] top-0 left-0"
+                    alt="Vector background top"
+                    src="/vector-1-2.svg"
+                  />
+              </>
+            ):(
+                <>
+                    
+                <div
+                  className="absolute w-full h-64 md:h-[430px] bottom-0 left-0"
+                  
+                />
+                <div
+                  className="absolute w-full h-64 md:h-[430px] top-0 left-0"
+                  
+                />
+            </>
+            )}
         </div>
 
         {/* Content container */}
@@ -172,7 +209,7 @@ export const HeroSection = (): JSX.Element => {
 
               {/* Submit Button */}
               <div className="relative">
-                <Button className={`w-full h-12 md:h-[61px] rounded-[10px] ${theme === 'dark' ? 'bg-[#1f1e1b]' : 'bg-gray-900'} text-white font-bold text-sm md:text-base hover:${theme === 'dark' ? 'bg-[#1f1e1b]/90' : 'bg-gray-800'} font-['Poppins',Helvetica] relative overflow-hidden border-[1px] border-solid border-[#ee7639] shadow-[0_0_20px_rgba(238,118,57,0.3)]`}>
+                <Button className={`w-full h-12 md:h-[61px] rounded-[10px] ${theme === 'dark' ? 'bg-[#1f1e1b] text-white' : 'bg-white-900 text-grey-900'}  font-bold text-sm md:text-base hover:${theme === 'dark' ? 'bg-[#1f1e1b]/90' : 'bg-gray-800'} font-['Poppins',Helvetica] relative overflow-hidden border-[1px] border-solid border-[#ee7639] shadow-[0_0_20px_rgba(238,118,57,0.3)]`}>
                   {/* Star/Sparkle effect in top-left corner */}
                   <div className="absolute top-[-20px] left-[-30px] w-16 h-16 md:w-20 md:h-20 pointer-events-none z-20">
                     <img

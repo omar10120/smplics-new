@@ -30,3 +30,4 @@ export const themes = {
 } as const
 
 export type Theme = keyof typeof themes
+

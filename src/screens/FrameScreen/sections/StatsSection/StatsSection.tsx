@@ -297,10 +297,10 @@ export const StatsSection = ({ activeSection, onNavClick }: StatsSectionProps): 
               {statsCards.map((card, index) => (
                 <Card
                   key={`stat-${index}`}
-                  className={`rounded-[7.35px] border-[0.74px] border-solid ${theme === 'dark' ? 'border-[#2a2a2a] bg-[linear-gradient(137deg,rgba(28,28,28,1)_0%,rgba(5,5,5,1)_100%)]' : 'border-gray-200 bg-white shadow-lg hover:shadow-xl transition-shadow'}`}
+                  className={`rounded-[7.35px] border-[0.74px] border-solid ${theme === 'dark' ? 'border-[#2a2a2a] bg-[linear-gradient(137deg,rgba(43,43,43,1)_0%,rgba(5,5,5,1)_100%)]' : 'border-gray-200 bg-white shadow-lg hover:shadow-xl transition-shadow'}`}
                 >
                   <CardContent className="flex flex-col items-center justify-center p-4 md:p-8">
-                    <span className="font-display-8-semi-bold text-[#ee7639] mt-[-0.74px] text-lg md:text-2xl">
+                    <span className="font-bold text-[#ee7639] mt-[-0.74px] text-lg md:text-2xl ">
                       {card.value}
                     </span>
                     <span className={`font-['Poppins',Helvetica] font-semibold ${currentTheme.text} text-xs md:text-base text-center leading-tight md:leading-[22px]`}>

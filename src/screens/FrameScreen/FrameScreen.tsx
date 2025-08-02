@@ -9,12 +9,16 @@ import { TestimonialsSection } from "./sections/TestimonialsSection";
 
 export const FrameScreen = (): JSX.Element => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
+      // Don't update active section if we're in the middle of navigation
+      if (isNavigating) return;
+      
       const sections = ['home', 'about', 'services', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // Use middle of viewport
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -30,15 +34,21 @@ export const FrameScreen = (): JSX.Element => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isNavigating]);
 
   const handleNavClick = (href: string) => {
     const sectionName = href.replace('#', '');
     setActiveSection(sectionName);
+    setIsNavigating(true);
     
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      
+      // Re-enable scroll detection after scroll animation completes
+      setTimeout(() => {
+        setIsNavigating(false);
+      }, 1000);
     }
   };
 

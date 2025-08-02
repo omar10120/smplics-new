@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -67,7 +66,11 @@ export const TestimonialsSection = (): JSX.Element => {
               size="icon"
               className={`p-0 h-6 md:h-7 w-6 md:w-[30.64px] ${currentTheme.text} hover:bg-transparent order-1 md:order-none`}
             >
-              <ChevronLeftIcon className="h-4 w-4 md:h-5 md:w-5" />
+              <img
+                className="h-4 w-4 md:h-5 md:w-5"
+                alt="Previous"
+                src="/Editl.svg"
+              />
             </Button>
 
             {/* Testimonial card */}
@@ -98,7 +101,11 @@ export const TestimonialsSection = (): JSX.Element => {
               size="icon"
               className={`p-0 h-6 md:h-7 w-6 md:w-[30.64px] ${currentTheme.text} hover:bg-transparent order-3 md:order-none`}
             >
-              <ChevronRightIcon className="h-4 w-4 md:h-5 md:w-5" />
+              <img
+                className="h-4 w-4 md:h-5 md:w-5"
+                alt="Next"
+                src="/Editr.svg"
+              />
             </Button>
           </div>
         </div>

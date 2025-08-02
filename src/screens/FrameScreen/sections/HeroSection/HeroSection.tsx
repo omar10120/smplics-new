@@ -119,7 +119,31 @@ export const HeroSection = (): JSX.Element => {
         <div className="relative z-[5] flex flex-col lg:flex-row gap-8 lg:gap-12 w-full max-w-6xl mx-auto">
           {/* Left side - Contact Information Panel */}
           <div className="w-full lg:w-1/3">
-            <Card className={`w-full h-[400px] md:h-[500px] rounded-[34.81px] border-none ${theme === 'dark' ? 'bg-gradient-to-b from-[#2a2a2a]/60 via-[#8B4513]/15 to-[#D2691E]/25' : 'bg-gradient-to-b from-gray-50 via-orange-50 to-orange-100'} relative overflow-hidden backdrop-blur-md before:content-[''] before:absolute before:inset-0 before:rounded-[34.81px] ${theme === 'dark' ? 'before:bg-gradient-to-b before:from-[#2a2a2a]/40 before:via-[#8B4513]/8 before:to-[#D2691E]/15' : 'before:bg-gradient-to-b before:from-gray-50/80 before:via-orange-50/60 before:to-orange-100/40'} after:content-[''] after:absolute after:inset-0 after:rounded-[34.81px] after:border-t-[0.3px] after:border-l-[0.3px] after:border-r-[0.3px] after:border-solid ${theme === 'dark' ? 'after:border-white/15 after:shadow-[0_0_15px_rgba(255,255,255,0.08)]' : 'after:border-orange-200/30 after:shadow-[0_0_15px_rgba(238,118,57,0.1)]'}`}>
+            <Card className={`w-full h-[400px] md:h-[500px] rounded-[34.81px] ${theme === 'dark' ? 'bg-gradient-to-b from-[#2a2a2a]/60 via-[#8B4513]/15 to-[#D2691E]/25 border-t-[1px] border-l-[1px] border-r-[1px] border-[#D2691E]/30' : 'bg-gradient-to-b from-gray-50 via-orange-50 to-orange-100 border-t-[1px] border-l-[1px] border-r-[1px] border-orange-300/50'} relative overflow-hidden backdrop-blur-sm border-2 border-b-0 `}>
+              {/* Background elements image for card */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  className="w-full h-full object-cover opacity-30"
+                  alt="Background elements"
+                  src="/bg-elements.png"
+                />
+              </div>
+              {/* Decorative line elements */}
+              <div className="absolute top-4 left-4 z-20">
+                <img
+                  className="w-8 h-8 md:w-12 md:h-12 "
+                  alt="Decorative line 1"
+                  src="/line-1.svg"
+                />
+              </div>
+              <div className="absolute top-4 right-4 z-20">
+                <img
+                  className="w-8 h-8 md:w-12 md:h-12 "
+                  alt="Decorative line 3"
+                  src="/line-3.svg"
+                />
+              </div>
+              
               <CardContent className="p-6 md:p-8 h-full flex flex-col relative z-10">
                 {/* Contact info - positioned in upper portion */}
                 <div className="flex flex-col gap-6 md:gap-8 flex-1">

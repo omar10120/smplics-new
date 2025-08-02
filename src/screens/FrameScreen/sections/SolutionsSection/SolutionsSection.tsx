@@ -15,10 +15,10 @@ export const SolutionsSection = (): JSX.Element => {
   
   // FAQ category tabs data
   const faqCategories = [
-    { id: "general", label: "General", selected: true },
-    { id: "services", label: "Services", selected: false },
-    { id: "support", label: "Support", selected: false },
-    { id: "product", label: "Product", selected: false },
+    { id: "general", label: "General" },
+    { id: "services", label: "Services" },
+    { id: "support", label: "Support" },
+    { id: "product", label: "Product" },
   ];
 
   // FAQ questions and answers data
@@ -97,19 +97,17 @@ export const SolutionsSection = (): JSX.Element => {
             </h2>
 
             <div className="flex flex-col w-full max-w-[696px] items-center gap-4 md:gap-[25px]">
-              <Tabs defaultValue="general" className="w-full">
+              <Tabs defaultValue="general" className="w-full ">
                 <TabsList className="grid grid-cols-2 md:flex w-full bg-transparent gap-2 md:gap-3 p-0">
                   {faqCategories.map((category) => (
                     <TabsTrigger
                       key={category.id}
                       value={category.id}
-                      className={`flex-1 py-2 md:py-3 px-3 md:px-5 rounded-[10px] border border-solid text-xs md:text-sm ${
-                        category.selected
-                          ? "border-[#ee7639] text-[#ee7639] font-semibold"
-                          : theme === 'dark' 
-                            ? "border-[#2a2a2a] text-white font-normal bg-[linear-gradient(137deg,rgba(28,28,28,1)_0%,rgba(5,5,5,1)_100%)]"
-                            : "border-gray-200 text-gray-700 font-normal bg-white"
-                      } font-['Poppins',Helvetica]`}
+                      className={`flex-1 py-2 md:py-3 px-3 md:px-5 rounded-[10px] border border-solid text-xs md:text-sm font-['Poppins',Helvetica] data-[state=active]:border-[#ee7639] data-[state=active]:text-[#ee7639] data-[state=active]:font-semibold ${
+                        theme === 'dark' 
+                          ? 'data-[state=inactive]:border-[#2a2a2a] data-[state=inactive]:text-white data-[state=inactive]:font-normal data-[state=inactive]:bg-[linear-gradient(137deg,rgba(28,28,28,1)_0%,rgba(5,5,5,1)_100%)]'
+                          : 'data-[state=inactive]:border-gray-200 data-[state=inactive]:text-gray-700 data-[state=inactive]:font-normal data-[state=inactive]:bg-white'
+                      }`}
                     >
                       {category.label}
                     </TabsTrigger>

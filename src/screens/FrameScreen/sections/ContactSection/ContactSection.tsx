@@ -80,15 +80,7 @@ export const ContactSection = (): JSX.Element => {
   ];
 
   // Handle navigation click
-  const handleNavClick = (href: string) => {
-    const sectionName = href.replace('#', '');
-    setActiveSection(sectionName);
-    
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  
 
   // Update active section based on scroll position
   useEffect(() => {
@@ -117,58 +109,33 @@ export const ContactSection = (): JSX.Element => {
    
 
       {/* Footer */}
-      <footer className={`relative w-full ${theme === 'dark' ? 'bg-[#1f1e1b]' : 'bg-gray-50'} overflow-hidden py-8 md:py-16`}>
+      <footer className={`relative w-full ${theme === 'dark' ? 'bg-[#1f1e1b]' : 'bg-gray-50'} overflow-hidden py-12 md:py-20`}>
         <div className="relative mx-auto max-w-7xl px-4">
-          {/* Background effects */}
-          <div className="absolute w-96 h-96 md:w-[799px] md:h-[832px] bottom-0 left-0 bg-[#ee7639] rounded-[186075.62px] blur-[300px] opacity-20" />
-          <div className="absolute w-96 h-96 md:w-[799px] md:h-[832px] top-0 right-0 bg-[#ee7639] rounded-[186075.62px] blur-[300px] opacity-20" />
-
           {/* Main content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 relative z-10">
             {/* Company info */}
-            <div className="flex flex-col gap-4 md:gap-6 lg:col-span-2">
-              {theme === 'dark'? (
-                <div className="relative w-32 h-12 md:w-[188px] md:h-[75px] bg-[url(/-------------------2025-06-22----14-18-20-3022eabe-1-removebg-pr-1.png)] bg-cover bg-[50%_50%]"></div>  
-              ):(
-                <div className="relative w-32 h-12 md:w-[188px] md:h-[75px] bg-[url(/Frame-1597883697.png)] bg-cover bg-[50%_50%]"></div>
-              )}
-              
-                {/* {theme === 'dark' ? (
-                  <img
-                  className="absolute w-20 h-6 top-3 left-6 md:w-[133px] md:h-9 md:top-5 md:left-11"
-                  alt="Smplics Logo"
-                  src="/-------------------2025-06-22----14-18-20-3022eabe-1--traced-.svg"
-                />
-                  
-                ):
-                <img
-                  className="absolute w-20 h-6 top-3 left-6 md:w-[133px] md:h-9 md:top-5 md:left-11"
-                  alt="Smplics Logo"
-                  src="/-------------------2025-06-22----14-18-20-3022eabe-1--traced-w.svg"
-                />
-                } */}
-                
-              
-              <p className={`font-['Poppins',Helvetica] font-normal ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-sm md:text-base leading-relaxed md:leading-6 max-w-md`}>
-                We build readymade websites, mobile
-                <br />
-                applications, and elaborate online
-                <br />
-                business services.
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center">
+                <span className={`font-bold text-2xl md:text-3xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  <span className="text-[#ee7639]">Smplics</span>.
+                </span>
+              </div>
+              <p className={`font-['Poppins',Helvetica] font-normal ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-sm md:text-base leading-relaxed max-w-sm`}>
+                We build readymade websites, mobile applications, and elaborate online business services.
               </p>
             </div>
 
             {/* Quick links */}
-            <div className="flex flex-col gap-4 md:gap-6">
-              <h3 className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-base tracking-[0.16px] leading-4`}>
+            <div className="flex flex-col gap-6">
+              <h3 className={`font-['Poppins',Helvetica] font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-base md:text-lg uppercase tracking-wide`}>
                 QUICK LINKS
               </h3>
-              <nav className="flex flex-col">
+              <nav className="flex flex-col gap-3">
                 {quickLinks.map((link, index) => (
                   <a
                     key={`quick-link-${index}`}
                     href="#"
-                    className={`h-8 md:h-9 py-1 md:py-[5px] font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'} text-sm md:text-base leading-6 transition-colors`}
+                    className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'} text-sm md:text-base transition-colors`}
                   >
                     {link.name}
                   </a>
@@ -177,16 +144,16 @@ export const ContactSection = (): JSX.Element => {
             </div>
 
             {/* Services */}
-            <div className="flex flex-col gap-4 md:gap-6">
-              <h3 className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm md:text-base tracking-[0.16px] leading-4`}>
+            <div className="flex flex-col gap-6">
+              <h3 className={`font-['Poppins',Helvetica] font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-base md:text-lg uppercase tracking-wide`}>
                 SERVICES
               </h3>
-              <nav className="flex flex-col">
+              <nav className="flex flex-col gap-3">
                 {services.map((service, index) => (
                   <a
                     key={`service-${index}`}
                     href="#"
-                    className={`h-8 md:h-9 py-1 md:py-[5px] font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'} text-sm md:text-base leading-6 transition-colors`}
+                    className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'} text-sm md:text-base transition-colors`}
                   >
                     {service.name}
                   </a>
@@ -195,24 +162,19 @@ export const ContactSection = (): JSX.Element => {
             </div>
 
             {/* Social media */}
-            <div className="flex flex-col gap-2 md:gap-3 md:col-span-1 lg:col-span-1">
+            <div className="flex flex-col gap-4">
               {socialMedia.map((social, index) => (
                 <a
                   key={`social-${index}`}
                   href="#"
-                  className={`inline-flex items-center gap-2 md:gap-2.5 p-2 md:p-3 ${social.bgColor} rounded-[5px] hover:opacity-90 transition-opacity`}
+                  className={`inline-flex items-center gap-3 p-3 ${social.bgColor} rounded-lg hover:opacity-90 transition-opacity`}
                 >
                   <img
-                    className="w-4 h-4 md:w-5 md:h-5"
+                    className="w-5 h-5"
                     alt={`${social.name} icon`}
                     src={social.icon}
                   />
-                  <img
-                    className="w-px h-4 md:h-5 object-cover"
-                    alt="Line"
-                    src="/line-1.svg"
-                  />
-                  <span className={`font-body-smalls-500 ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-xs md:text-[length:var(--body-smalls-500-font-size)] tracking-[var(--body-smalls-500-letter-spacing)] leading-[var(--body-smalls-500-line-height)]`}>
+                  <span className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-sm`}>
                     {social.name}
                   </span>
                 </a>
@@ -221,9 +183,9 @@ export const ContactSection = (): JSX.Element => {
           </div>
 
           {/* Footer bottom */}
-          <div className="mt-8 md:mt-16 flex flex-col items-center gap-4 md:gap-8">
-            <Separator className={`w-full ${theme === 'dark' ? 'bg-white/20' : 'bg-gray-300'}`} />
-            <p className={`font-body-medium-400 ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-center text-sm md:text-base`}>
+          <div className="mt-12 md:mt-16 flex flex-col items-center gap-6">
+            <Separator className={`w-full h-px ${theme === 'dark' ? 'bg-white/20' : 'bg-gray-300'}`} />
+            <p className={`font-['Poppins',Helvetica] font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-center text-sm md:text-base`}>
               © 2025- Smplics
             </p>
           </div>
